@@ -3,6 +3,7 @@ from datetime import datetime
 
 import jinja2
 import pdfkit
+import imgkit
 
 
 class LittleGlue(object):
@@ -27,8 +28,15 @@ class LittleGlue(object):
         self.__check_template_path()
         LittleGlue.get_or_create_generated_glues_folder()
         self.__render_template()
-        if self.export_format == 'pdf':
+
+        if self.export_format.lower() == 'pdf':
             self.__generate_pdf()
+        elif self.export_format.lower() in ['jpg', 'jpeg']:
+            self.__generate_jpg()
+        elif self.export_format.lower() == 'html':
+            return None
+        else:
+            raise ValueError("Formato incompatível.")
 
     # Auxiliary Methods
     # -----------------
@@ -47,10 +55,12 @@ class LittleGlue(object):
         return "templates/{}_template.html".format(self.__election_type)
 
     def __check_template_path(self):
+        """Checks if template path exists"""
         if not os.path.isfile(self.__html_template):
-            raise FileNotFoundError("Template {} não existe!".format(self.__html_template))
+            raise FileNotFoundError("Template {} não existe.".format(self.__html_template))
 
     def __render_template(self):
+        """Renders template variables and generates a HTML file"""
         template_loader = jinja2.FileSystemLoader(searchpath="./")
         template_env = jinja2.Environment(loader=template_loader)
         template = template_env.get_template(self.__html_template)
@@ -66,6 +76,7 @@ class LittleGlue(object):
         return output_html
 
     def __get_render_data(self):
+        """Gets render data to be used on templates"""
         return {
             "candidates": self.candidates_data,
             "size": {
@@ -81,14 +92,24 @@ class LittleGlue(object):
         }
 
     def __get_filename(self, extension):
+        """Gets filename for generated files"""
         now = datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
         return "{}_{}.{}".format(self.__election_type, now, extension)
 
     def __generate_pdf(self):
+        """Generates PDF file from template"""
         filename_pdf = self.__get_filename(extension="pdf")
         pdfkit.from_file(
             input="generated_glues/{}".format(self.__output_html_filename),
             output_path="generated_glues/{}".format(filename_pdf)
+        )
+
+    def __generate_jpg(self):
+        """Generates JPG file from template"""
+        filename_jpg = self.__get_filename(extension="jpg")
+        imgkit.from_file(
+            filename="generated_glues/{}".format(self.__output_html_filename),
+            output_path="generated_glues/{}".format(filename_jpg)
         )
 
     # Static Methods
