@@ -5,8 +5,8 @@ help:
 	@python main.py help
 
 install:
-	@sudo apt-get update
-	@sudo apt-get install -y wkhtmltopdf
+	#@sudo apt-get update
+	#@sudo apt-get install -y wkhtmltopdf
 	@echo "================================================================================"
 	@echo "===!!! Você vai precisar criar agora uma virtualenv para rodar o projeto! !!!==="
 	@echo "================================================================================"
