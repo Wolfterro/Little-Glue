@@ -8,7 +8,7 @@ import imgkit
 
 class LittleGlue(object):
     DEFAULT_FONT_CONFIGS = (18, 42, 20, "bold")     # (Candidate Name Size, Candidate Number Size, Spacing, Font Weight)
-    DEFAULT_EXPORT_FORMAT = 'pdf'                   # PDF format (Accepted formats: pdf and jpg)
+    DEFAULT_EXPORT_FORMAT = 'pdf'                   # PDF format (Accepted formats: pdf and jpg/jpeg)
     DEFAULT_COLOR_SCHEME = ("#ffffff", "#000000")   # (Background, Font) - Hexadecimal values
 
     def __init__(self, **kwargs):
