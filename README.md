@@ -104,3 +104,27 @@ O arquivo JSON já é gerado automaticamente quando você cadastra uma nova coli
   "election_type": "presidential"
 }
 ```
+
+#### JSON para Eleições Municipais
+```json
+{
+  "candidates_data": {
+    "alderman": [
+      {
+        "number": "99999",
+        "name": "João da Feira"
+      }
+    ],
+    "prefect": {
+      "number": "99",
+      "name": "Professor Pereira"
+    }
+  },
+  "color_scheme": ["#ffffff", "#000000"],
+  "export_format": "pdf",
+  "font_configs": [12, 32, 15, "bold"],
+  "election_type": "municipal"
+}
+```
+
+Ambos os arquivos JSON de exemplo podem ser encontadas na pasta **example**, na raiz do projeto.
