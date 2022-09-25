@@ -32,45 +32,47 @@
     }
 </style>
 <body>
-{% for candidate in data.candidates.federal_deputy %}
-    <p class="position-name">Deputado Federal </p> <p class="candidate-name">{{ candidate.name }}</p>
+<div>
+    {% for candidate in data.candidates.federal_deputy %}
+        <p class="position-name">Deputado Federal </p> <p class="candidate-name">{{ candidate.name }}</p>
+        <br><br>
+        {% for char in candidate.number %}
+            <span class="candidate-number">{{ char }}</span>
+        {% endfor %}
+        <br><br>
+    {% endfor %}
+
+    {% for candidate in data.candidates.state_deputy %}
+        <p class="position-name">Deputado Estadual </p> <p class="candidate-name">{{ candidate.name }}</p>
+        <br><br>
+        {% for char in candidate.number %}
+            <span class="candidate-number">{{ char }}</span>
+        {% endfor %}
+        <br><br>
+    {% endfor %}
+
+    {% for candidate in data.candidates.senator %}
+        <p class="position-name">Senador </p> <p class="candidate-name">{{ candidate.name }}</p>
+        <br><br>
+        {% for char in candidate.number %}
+            <span class="candidate-number">{{ char }}</span>
+        {% endfor %}
+        <br><br>
+    {% endfor %}
+
+    <p class="position-name">Governador </p> <p class="candidate-name">{{ data.candidates.governor.name }}</p>
     <br><br>
-    {% for char in candidate.number %}
+    {% for char in data.candidates.governor.number %}
         <span class="candidate-number">{{ char }}</span>
     {% endfor %}
-    <br><br><br>
-{% endfor %}
-
-{% for candidate in data.candidates.state_deputy %}
-    <p class="position-name">Deputado Estadual </p> <p class="candidate-name">{{ candidate.name }}</p>
     <br><br>
-    {% for char in candidate.number %}
+
+    <p class="position-name">Presidente </p> <p class="candidate-name">{{ data.candidates.president.name }}</p>
+    <br><br>
+    {% for char in data.candidates.president.number %}
         <span class="candidate-number">{{ char }}</span>
     {% endfor %}
-    <br><br><br>
-{% endfor %}
-
-{% for candidate in data.candidates.senator %}
-    <p class="position-name">Senador </p> <p class="candidate-name">{{ candidate.name }}</p>
     <br><br>
-    {% for char in candidate.number %}
-        <span class="candidate-number">{{ char }}</span>
-    {% endfor %}
-    <br><br><br>
-{% endfor %}
-
-<p class="position-name">Governador </p> <p class="candidate-name">{{ data.candidates.governor.name }}</p>
-<br><br>
-{% for char in data.candidates.governor.number %}
-    <span class="candidate-number">{{ char }}</span>
-{% endfor %}
-<br><br><br>
-
-<p class="position-name">Presidente </p> <p class="candidate-name">{{ data.candidates.president.name }}</p>
-<br><br>
-{% for char in data.candidates.president.number %}
-    <span class="candidate-number">{{ char }}</span>
-{% endfor %}
-<br><br><br>
+</div>
 </body>
 </html>
