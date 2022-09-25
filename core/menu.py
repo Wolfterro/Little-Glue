@@ -108,7 +108,7 @@ class LittleGlueMenu(object):
         """
         print("Primeiro será necessário informar que tipo de eleição será!")
         print("-----------------------------------------------------------")
-        election_type = input("Tipo de eleição [p = Presidencial | m = Municipal | o = Outro (Especifique)]: ")
+        election_type = input("Tipo de eleição [p = Presidencial | m = Municipal]: ")
         if election_type.lower() == 'p':
             election_type = 'presidential'
         elif election_type.lower() == 'm':
