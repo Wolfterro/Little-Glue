@@ -3,7 +3,7 @@ Aquele programinha maroto pra fazer aquela colinha marota pras eleições!
 
 
 ## Descrição
-Bom, devido as últimas decisões do TSE que desfavorecem o uso de celulares nas seções de votação, decidi criar este programa para as pessoas que possuem dificuldades de memorizar os vários números de diversos candidatos nas eleições presidenciais e municipais que ocorrerem.
+Bom, devido as últimas decisões do Tribunal Superior Eleitoral (TSE) que desfavorecem o uso de celulares nas seções de votação, decidi criar este programa para as pessoas que possuem dificuldades de memorizar os vários números de diversos candidatos nas eleições presidenciais e municipais que ocorrerem.
 
 É bem provável também que muita gente já tenha recebido o famoso "santinho" de seus candidatos ou já tenha preenchido os números com a famosa dupla Papel e Caneta, mas pensando em utilizar a mais alta tecnologia de ponta do Terminal do GNU/Linux aliado a linguagem Python de programação, decidi criar este pequeno programinha para gerar as famosas "colinhas" que podem ser usadas como guia na hora da votação. Você pode criar colinhas para você, seus amigos, parentes, ou qualquer outra pessoa que tenha interesse em ter uma colinha impressa com os candidatos que a pessoa quiser.
 
@@ -58,6 +58,10 @@ Que é a mesma coisa que rodar:
 ```shell
 python main.py menu
 ```
+
+<img src="https://github.com/Wolfterro/Little-Glue/raw/master/examples/screenshot_1.png" />
+
+<img src="https://github.com/Wolfterro/Little-Glue/raw/master/examples/screenshot_2.png" />
 
 ### Linha de Comando
 Para executar o programa via linha de comando, basta utilizar o comando abaixo como exemplo:
