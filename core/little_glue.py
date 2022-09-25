@@ -24,7 +24,10 @@ class LittleGlue(object):
         self.__output_html_filename = None
 
     def generate(self):
-        """Main method to generate little glues based on the values passed to the class"""
+        """
+        Main method to generate little glues based on the values passed to the class
+        :return: None
+        """
         self.__check_template_path()
         LittleGlue.get_or_create_generated_glues_folder()
         self.__render_template()
@@ -41,7 +44,10 @@ class LittleGlue(object):
     # Auxiliary Methods
     # -----------------
     def __get_election_type_from_candidates_data(self, election_type=None):
-        """Gets election type based on number of candidates or when passed explicitly"""
+        """
+        Gets election type based on number of candidates or when passed explicitly
+        :return: string
+        """
         if election_type:
             return election_type
 
@@ -51,16 +57,25 @@ class LittleGlue(object):
             return "municipal"
 
     def __get_template_from_election_type(self):
-        """Gets the path for the HTML template"""
+        """
+        Gets the path for the HTML template
+        :return: string
+        """
         return "templates/{}_template.html".format(self.__election_type)
 
     def __check_template_path(self):
-        """Checks if template path exists"""
+        """
+        Checks if template path exists
+        :return: None
+        """
         if not os.path.isfile(self.__html_template):
             raise FileNotFoundError("Template {} não existe.".format(self.__html_template))
 
     def __render_template(self):
-        """Renders template variables and generates a HTML file"""
+        """
+        Renders template variables and generates a HTML file
+        :return: string
+        """
         template_loader = jinja2.FileSystemLoader(searchpath="./")
         template_env = jinja2.Environment(loader=template_loader)
         template = template_env.get_template(self.__html_template)
@@ -76,7 +91,10 @@ class LittleGlue(object):
         return output_html
 
     def __get_render_data(self):
-        """Gets render data to be used on templates"""
+        """
+        Gets render data to be used on templates
+        :return: dict
+        """
         return {
             "candidates": self.candidates_data,
             "size": {
@@ -92,12 +110,18 @@ class LittleGlue(object):
         }
 
     def __get_filename(self, extension):
-        """Gets filename for generated files"""
+        """
+        Gets filename for generated files
+        :return: string
+        """
         now = datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
         return "{}_{}.{}".format(self.__election_type, now, extension)
 
     def __generate_pdf(self):
-        """Generates PDF file from template"""
+        """
+        Generates PDF file from template
+        :return: None
+        """
         filename_pdf = self.__get_filename(extension="pdf")
         pdfkit.from_file(
             input="generated_glues/{}".format(self.__output_html_filename),
@@ -105,7 +129,10 @@ class LittleGlue(object):
         )
 
     def __generate_jpg(self):
-        """Generates JPG file from template"""
+        """
+        Generates JPG file from template
+        :return: None
+        """
         filename_jpg = self.__get_filename(extension="jpg")
         imgkit.from_file(
             filename="generated_glues/{}".format(self.__output_html_filename),
@@ -116,7 +143,9 @@ class LittleGlue(object):
     # --------------
     @staticmethod
     def get_or_create_generated_glues_folder():
-        """Checks if generated_glues folder was created on the root of the project
-        and creates one if not previously created"""
+        """
+        Checks if generated_glues folder was created on the root of the project and creates one if not
+        :return: None
+        """
         if not os.path.isdir("generated_glues"):
             os.mkdir("generated_glues")

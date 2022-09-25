@@ -3,7 +3,7 @@ from core.menu import LittleGlueMenu
 
 def main(*args, **kwargs):
     pass
-   # TODO: Integrate with Google Fire and develop a interactive menu to generate new little glues
+    # TODO: Integrate with Google Fire and develop a interactive menu to generate new little glues
 
 
 if __name__ == '__main__':

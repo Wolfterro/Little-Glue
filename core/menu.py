@@ -13,10 +13,14 @@ class LittleGlueMenu(object):
         self.version = kwargs.get('version')
 
     def show_main_menu(self):
+        """
+        Main Menu
+        :return: None
+        """
         menu = ConsoleMenu(
             "Little Glue - v{}".format(self.version),
             "Aquele programinha maroto pra fazer aquela colinha marota pras eleições!",
-            exit_option_text = 'Sair',
+            exit_option_text='Sair',
             formatter=LittleGlueMenu.get_menu_format(),
             clear_screen=True
         )
@@ -36,9 +40,13 @@ class LittleGlueMenu(object):
     # Auxiliary Methods
     # -----------------
     def __get_json_data_menu(self):
+        """
+        Menu to list JSON data files
+        :return: SelectionMenu object
+        """
         menu = SelectionMenu(
             title="Little Glue - v{}".format(self.version),
-            subtitle="Alguns dados de candidatos foram encontrados. Você deseja selecionar um deles para gerar a colinha?",
+            subtitle="Alguns dados salvos foram encontrados. Você deseja selecionar um deles para gerar a colinha?",
             exit_option_text='Voltar',
             formatter=LittleGlueMenu.get_menu_format(),
             clear_screen=True,
@@ -56,6 +64,13 @@ class LittleGlueMenu(object):
         return menu
 
     def __execute_selected_method(self, method_type, method, args_list):
+        """
+
+        :param method_type: 'json_data_generate' generate little glues from JSON data | 'register' registers a new one
+        :param method: Method to be called. Can be set to None in case of 'json_data_generate' method type.
+        :param args_list: List of arguments to be passed to the selected method.
+        :return: None
+        """
         if method_type == 'json_data_generate':
             file = open("candidates_json/{}".format(args_list[0]), "r")
             data = json.loads(file.read())
@@ -73,6 +88,10 @@ class LittleGlueMenu(object):
         self.__show_finished_menu()
 
     def __show_finished_menu(self):
+        """
+        Finished prompt screen.
+        :return: None
+        """
         menu = ConsoleMenu(
             title="Geração da colinha feita com sucesso!",
             subtitle="Você poderá ver sua colinha dentro da pasta generated_glues, na raíz do programa.",
@@ -83,6 +102,10 @@ class LittleGlueMenu(object):
         menu.show()
 
     def __get_new_data(self):
+        """
+        Basic prompts to assemble a new JSON data to be used to generate new little glues.
+        :return: dict
+        """
         print("Primeiro será necessário informar que tipo de eleição será!")
         print("-----------------------------------------------------------")
         election_type = input("Tipo de eleição [p = Presidencial | m = Municipal | o = Outro (Especifique)]: ")
@@ -96,7 +119,8 @@ class LittleGlueMenu(object):
         print("\n")
         print("Agora iremos cadastrar os candidatos nesta eleição! Por favor, selecione as opções abaixo.")
         print("------------------------------------------------------------------------------------------")
-        ct_input = "Tipo de candidato [v = Vereador | p = Prefeito | de = Dep. Estadual | df = Dep. Federal | se = Senador | g = Governador | pr = Presidente | s = Sair]: "
+        ct_input = "Tipo de candidato [v = Vereador | p = Prefeito | de = Dep. Estadual | df = Dep. Federal | se = " \
+                   "Senador | g = Governador | pr = Presidente | s = Sair]: "
         while candidate_type.lower() != 's':
             candidate_type = input(ct_input)
             if candidate_type.lower() == 's':
@@ -190,7 +214,11 @@ class LittleGlueMenu(object):
     # --------------
     @staticmethod
     def get_menu_format():
-        return MenuFormatBuilder().set_border_style_type(MenuBorderStyleType.HEAVY_BORDER) \
+        """
+        Menu format to be used by the program menus.
+        :return: None
+        """
+        return MenuFormatBuilder().set_border_style_type(MenuBorderStyleType.ASCII_BORDER) \
             .set_prompt(">> ") \
             .set_title_align('center') \
             .set_subtitle_align('center') \
