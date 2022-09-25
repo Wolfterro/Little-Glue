@@ -1,9 +1,8 @@
-import json
-
 import fire
 
 from core.little_glue import LittleGlue
 from core.menu import LittleGlueMenu
+from core.json_data import JsonData
 
 
 VERSION = "1.0.0"
@@ -15,12 +14,9 @@ class MainClass(object):
         if not from_file:
             return None
 
-        file = open(from_file, "r")
-        data = json.loads(file.read())
-
-        little_glue = LittleGlue(**data)
+        little_glue = LittleGlue(**JsonData.get_data_from_json_file(from_file))
         little_glue.generate()
-        print('Geração da colinha feita com sucesso!')
+        print('Geração da colinha feita com sucesso! Verifique na pasta generated_glues.')
 
     @staticmethod
     def menu():

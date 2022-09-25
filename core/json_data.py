@@ -26,7 +26,7 @@ class JsonData(object):
     @staticmethod
     def json_data_exists():
         """
-        Checks if JSON data exists inside the folder
+        Checks if JSON data exists inside the folder.
         :return: bool
         """
         if len(JsonData.get_json_data_files()) > 0:
@@ -45,7 +45,7 @@ class JsonData(object):
     @staticmethod
     def check_candidates_json_folder():
         """
-        Checks if candidates_json folder was created on the root of the project and creates one if not
+        Checks if candidates_json folder was created on the root of the project and creates one if not.
         :return: None
         """
         if not os.path.isdir("candidates_json"):
@@ -54,8 +54,18 @@ class JsonData(object):
     @staticmethod
     def get_filename():
         """
-        Gets filename for generated files
+        Gets filename for generated files.
         :return: None
         """
         now = datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
         return "{}_{}.{}".format("candidates", now, "json")
+
+    @staticmethod
+    def get_data_from_json_file(path):
+        """
+        Returns string data from JSON file.
+        :param path: Path to JSON file
+        :return: string
+        """
+        file = open(path, "r")
+        return json.loads(file.read())
