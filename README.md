@@ -133,7 +133,7 @@ O arquivo JSON já é gerado automaticamente quando você cadastra uma nova coli
 
 #### Campos
 
-- **candidates_data**: Dados dos candidatos. Vereadores e Deputados são uma lista de objetos, enquanto que Prefeito, Governador e Presidente são objetos apenas.
+- **candidates_data**: Dados dos candidatos. Vereadores, Deputados e Senadores são uma lista de objetos, enquanto que Prefeito, Governador e Presidente são objetos apenas.
 
 - **color_scheme**: Lista indicativa com esquema de cores em hexadecimal. \[COR DE BACKGROUND, COR DA FONTE]
 
