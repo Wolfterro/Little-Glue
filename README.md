@@ -131,4 +131,25 @@ O arquivo JSON já é gerado automaticamente quando você cadastra uma nova coli
 }
 ```
 
+#### Campos
+
+- **candidates_data**: Dados dos candidatos. Vereadores e Deputados são uma lista de objetos, enquanto que Prefeito, Governador e Presidente são objetos apenas.
+
+- **color_scheme**: Lista indicativa com esquema de cores em hexadecimal. \[COR DE BACKGROUND, COR DA FONTE]
+
+- **export_format**: Tipo de exportação da colinha. No momento é suportado apenas dois formatos: pdf | jpg/jpeg (HTML sempre será gerado).
+
+- **font_configs**: Configurações de fonte em padrão px. \[TAMANHO DA FONTE DO NOME DO CANDIDATO, TAMANHO DA FONTE DO NÚMERO DO CANDIDATO, ESPAÇAMENTO NO NÚMERO DO CANDIDATO, PESO DA FONTE]
+
+- **election_type**: Tipo de eleição. Atualmente apenas dois formatos são suportados: presidential | municipal.
+
 Ambos os arquivos JSON de exemplo podem ser encontadas na pasta **example**, na raiz do projeto.
+
+## Exemplos de Colinhas
+Abaixo estão alguns exemplos, gerados com os JSON acima. Lembrando que é possível customizar o esquema de cores (referenciados no campo **color_scheme**) e fontes (no campo **font_configs**).
+
+#### Eleições Presidenciais
+<img src="https://github.com/Wolfterro/Little-Glue/raw/master/examples/presidential_2022-09-25T04:03:31.jpg" />
+
+#### Eleições Municipais
+<img src="https://github.com/Wolfterro/Little-Glue/raw/master/examples/municipal_2022-09-25T04:03:56.jpg" />
