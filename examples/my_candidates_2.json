@@ -1,0 +1,18 @@
+{
+  "candidates_data": {
+    "alderman": [
+      {
+        "number": "99999",
+        "name": "João da Feira"
+      }
+    ],
+    "prefect": {
+      "number": "99",
+      "name": "Professor Pereira"
+    }
+  },
+  "color_scheme": ["#ffffff", "#000000"],
+  "export_format": "pdf",
+  "font_configs": [12, 32, 15, "bold"],
+  "election_type": "municipal"
+}
