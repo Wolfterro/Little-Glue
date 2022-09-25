@@ -1,5 +1,8 @@
 run:
-	@python main.py
+	@python main.py menu
+
+help:
+	@python main.py help
 
 install:
 	@sudo apt-get update
